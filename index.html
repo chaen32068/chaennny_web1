@@ -2,614 +2,254 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaenny Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #fff;
-            color: #000;
-            font-family: 'Pretendard', sans-serif;
-            line-height: 1.5;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        h2 {
-            font-size: 40px;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-
-        /* 필터 탭 */
-        .filter_tab {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-        }
-
-        .filter_tab button {
-            padding: 10px 20px;
-            border: 1px solid #000;
-            background: #fff;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 13px;
-        }
-
-        .filter_tab button.active,
-        .filter_tab button:hover {
-            background: #000;
-            color: #fff;
-        }
-
-        /* 그리드 레이아웃 */
-        .port_list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .item {
-            position: relative;
-            border: 1px solid #eee;
-            overflow: hidden;
-            background: #fff;
-            transition: 0.3s;
-        }
-
-        .item:hover {
-            border-color: #000;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
-
-        .item.hide {
-            display: none;
-        }
-
-        /* 이미지 및 호버 정보 */
-        figure {
-            width: 100%;
-            text-align: center;
-            aspect-ratio: 16 / 10;
-            overflow: hidden;
-            background: #fff;
-        }
-
-        figure img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s ease;
-        }
-
-        .item:hover figure img {
-            transform: scale(1.05);
-        }
-
-        .hover_info {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: 0.3s;
-            padding: 20px;
-            text-align: center;
-            z-index: 2;
-        }
-
-        .item:hover .hover_info {
-            opacity: 1;
-        }
-
-        .hover_info h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .hover_info p {
-            font-size: 12px;
-            color: #ccc;
-        }
-
-        /* 하단 텍스트 */
-        .txt_box {
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #eee;
-        }
-
-        .txt_box strong {
-            font-size: 14px;
-            font-weight: 700;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 70%;
-        }
-
-        .percent {
-            font-size: 10px;
-            font-weight: 800;
-            border: 1.5px solid #000;
-            padding: 2px 6px;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chaenny's Web Portfolio</title>
+	<link rel="icon" href="images/icon.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.5/mobile-detect.min.js"></script>
+	<script src="https://kit.fontawesome.com/847867007a.js" crossorigin="anonymous"></script>
+	<script defer src="script/script.js"></script>
 </head>
 
 <body>
-    <div class="inner">
-        <h2>Portfolio</h2>
-        <div class="filter_tab">
-            <button class="filter-btn active" data-filter="all">ALL</button>
-            <button class="filter-btn" data-filter="build">구축</button>
-            <button class="filter-btn" data-filter="oper">운영</button>
-            <button class="filter-btn" data-filter="personal">개인</button>
-        </div>
+	<nav id="skip_navi">
+		<a href="#about" tabindex="0">본문 바로가기</a>
+	</nav>
+	<!-- //nav -->
 
-        <ul class="port_list">
-            <!-- 구축 -->
-            <li class="item build"><a href="https://web.paybooc.co.kr" target="_blank">
-                    <figure><img src="images/bc_paybook_mo.png"></figure>
-                    <div class="hover_info">
-                        <h4>비씨카드 페이북</h4>
-                        <p>반응형 / 리뉴얼</p>
-                    </div>
-                    <div class="txt_box"><strong>비씨카드 페이북</strong><span class="percent">80%</span></div>
-                </a>
-            </li>
-            <li class="item build"><a href="https://www.samsungsdi.co.kr" target="_blank">
-                    <figure><img src="images/sdi.png"></figure>
-                    <div class="hover_info">
-                        <h4>SAMSUNG SDI</h4>
-                        <p>반응형 / 리뉴얼</p>
-                    </div>
-                    <div class="txt_box"><strong>SAMSUNG SDI</strong><span class="percent">80%</span></div>
-                </a>
-            </li>
-            <li class="item build"><a href="https://hlmando.com" target="_blank">
-                    <figure><img src="images/mando.png"></figure>
-                    <div class="hover_info">
-                        <h4>HL만도 다국어(영문)</h4>
-                        <p>반응형 / 리뉴얼</p>
-                    </div>
-                    <div class="txt_box"><strong>HL만도</strong><span class="percent">60%</span></div>
-                </a>
-            </li>
-            <li class="item build"><a href="https://data.mfds.go.kr" target="_blank"
-                    onclick="alert('관리자 페이지는 로그인 후 접속 가능합니다.');">
-                    <figure><img src="images/mfds.png"></figure>
-                    <div class="hover_info">
-                        <h4>식품의약품안전처</h4>
-                        <p>PC / admin 리뉴얼</p>
-                    </div>
-                    <div class="txt_box"><strong>식품의약품안전처</strong><span class="percent">80%</span></div>
-                </a>
-            </li>
-            <li class="item build"><a href="http://m.ggi.co.kr" target="_blank">
-                    <figure><img src="images/ggi_mo.png"></figure>
-                    <div class="hover_info">
-                        <h4>지지옥션 모바일</h4>
-                        <p>리뉴얼</p>
-                    </div>
-                    <div class="txt_box"><strong>지지옥션 모바일</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item build"><a href="javascript:void(0);" onclick="alert('관리자 페이지는 접속이 제한 됩니다.');">
-                    <figure><img src="images/otsuka.png"></figure>
-                    <div class="hover_info">
-                        <h4>오츠카 MR library</h4>
-                        <p>반응형 / admin 리뉴얼</p>
-                    </div>
-                    <div class="txt_box"><strong>오츠카 MR library</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item build"><a href="https://www.nagonggan.co.kr" target="_blank">
-                    <figure><img src="images/nagonggan1.png"></figure>
-                    <div class="hover_info">
-                        <h4>나만의 공간</h4>
-                        <p>반응형 / 오픈</p>
-                    </div>
-                    <div class="txt_box"><strong>나만의 공간</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item build"><a href="https://www.nagonggan.co.krsub/" target="_blank">
-                    <figure><img src="images/nagonggan2.png"></figure>
-                    <div class="hover_info">
-                        <h4>나만의 공간 시공</h4>
-                        <p>반응형 / 오픈</p>
-                    </div>
-                    <div class="txt_box"><strong>나만의 공간 시공</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
+	<div class="wrap">
+		<header>
+			<h1 class="logo">
+				<a href="index.html" title="메인으로 이동하기" tabindex="0">
+					<img src="images/logo_w.png" alt="메인으로 이동하기">
+				</a>
+			</h1>
+			<nav class="nav">
+				<a href="#about" title="About으로 이동하기" tabindex="0">About</a>
+				<a href="#portfolio" title="Portfolio로 이동하기" tabindex="0">Portfolio</a>
+				<a href="#contact" title="contact로 이동하기" tabindex="0">contact</a>
+			</nav>
+		</header>
+		<!-- //header -->
 
-            <!-- 운영 -->
-            <li class="item oper"><a href="https://directauto.samsungcard.com/oap/common/UOAPCO0301M1.jsp"
-                    target="_blank">
-                    <figure><img src="images/samsungcard.png" style="max-width: 360px;"></figure>
-                    <div class="hover_info">
-                        <h4>삼성카드 다이렉트 오토</h4>
-                        <p>반응형 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>삼성카드 다이렉트 오토</strong><span class="percent">60%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://flyasiana.com" target="_blank">
-                    <figure><img src="images/asiana.png"></figure>
-                    <div class="hover_info">
-                        <h4>아시아나항공</h4>
-                        <p>반응형 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>아시아나항공</strong><span class="percent">60%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.lge.co.kr" target="_blank">
-                    <figure><img src="images/lg.png"></figure>
-                    <div class="hover_info">
-                        <h4>LG전자</h4>
-                        <p>반응형 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>LG전자</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://paybooc.co.kr" target="_blank">
-                    <figure><img src="images/bc_paybook.png"></figure>
-                    <div class="hover_info">
-                        <h4>비씨카드 페이북</h4>
-                        <p>적응형 / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>비씨카드 페이북</strong><span class="percent">80%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.bccard.com" target="_blank">
-                    <figure><img src="images/bc_card.png"></figure>
-                    <div class="hover_info">
-                        <h4>비씨카드 개인</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>비씨카드 개인</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.bccard.com" target="_blank">
-                    <figure><img src="images/bc_card_merchant.png"></figure>
-                    <div class="hover_info">
-                        <h4>비씨카드 가맹점</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>비씨카드 가맹점</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://wisebiz.bccard.com" target="_blank">
-                    <figure><img src="images/bc_card_company.png"></figure>
-                    <div class="hover_info">
-                        <h4>비씨카드 기업</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>비씨카드 기업</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="http://vip.bccard.com" target="_blank">
-                    <figure><img src="images/bc_card_vip.png"></figure>
-                    <div class="hover_info">
-                        <h4>비씨카드 VIP</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>비씨카드 VIP</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.bccard.com" target="_blank">
-                    <figure><img src="images/bc_about.png"></figure>
-                    <div class="hover_info">
-                        <h4>비씨카드 About BC</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>비씨카드 About BC</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.ggi.co.kr" target="_blank">
-                    <figure><img src="images/ggi.png"></figure>
-                    <div class="hover_info">
-                        <h4>지지옥션</h4>
-                        <p>적응형 / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>지지옥션</strong><span class="percent">80%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="http://www.ggfund.co.kr" target="_blank">
-                    <figure><img src="images/ggfund.png"></figure>
-                    <div class="hover_info">
-                        <h4>지지자산운용</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>지지자산운용</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="http://www.gghotel.co.kr" target="_blank">
-                    <figure><img src="images/gghotel.png"></figure>
-                    <div class="hover_info">
-                        <h4>지지호텔</h4>
-                        <p>반응형 / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>지지호텔</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="http://www.ggvalley.co.kr" target="_blank">
-                    <figure><img src="images/ggvalley.png"></figure>
-                    <div class="hover_info">
-                        <h4>지지밸리</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>지지밸리</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.infocare.co.kr" target="_blank">
-                    <figure><img src="images/infocare.png"></figure>
-                    <div class="hover_info">
-                        <h4>인포케어</h4>
-                        <p>반응형 / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>인포케어</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.ggitop.co.kr" target="_blank">
-                    <figure><img src="images/ggitop.png"></figure>
-                    <div class="hover_info">
-                        <h4>지지탑경매</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>지지탑경매</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="http://www.ch-auction.co.kr" target="_blank">
-                    <figure><img src="images/auction.png"></figure>
-                    <div class="hover_info">
-                        <h4>경매채널</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>경매채널</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.courtauction.co.kr" target="_blank">
-                    <figure><img src="images/courtauction.png"></figure>
-                    <div class="hover_info">
-                        <h4>한국법원경매정보</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>한국법원경매정보</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://korea-wifi.net" target="_blank">
-                    <figure><img src="images/koreawifi.png"></figure>
-                    <div class="hover_info">
-                        <h4>코리아와이파이</h4>
-                        <p>반응형 / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>코리아와이파이</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.globalwifi.co.kr" target="_blank">
-                    <figure><img src="images/globalwifi.png"></figure>
-                    <div class="hover_info">
-                        <h4>글로벌와이파이</h4>
-                        <p>반응형 / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>글로벌와이파이</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="http://www.kjdream.org" target="_blank">
-                    <figure><img src="images/kjdream.png"></figure>
-                    <div class="hover_info">
-                        <h4>본국 투자협회</h4>
-                        <p>PC / 운영</p>
-                    </div>
-                    <div class="txt_box"><strong>본국 투자협회</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="https://www.inkel.co.kr" target="_blank">
-                    <figure><img src="images/inkel.png"></figure>
-                    <div class="hover_info">
-                        <h4>인켈</h4>
-                        <p>PC / 운영(글로벌)</p>
-                    </div>
-                    <div class="txt_box"><strong>인켈</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item oper"><a href="http://www.reverse.co.jp" target="_blank">
-                    <figure><img src="images/reverse.png"></figure>
-                    <div class="hover_info">
-                        <h4>Reverse</h4>
-                        <p>반응형 / 운영(글로벌)</p>
-                    </div>
-                    <div class="txt_box"><strong>Reverse</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
+		<div id="fullpage">
+			<section id="main">
+				<div class="inner">
+					<div class="tit">
+						<h2>안녕하세요!<br />
+							<b>채은진</b>입니다 <span class="emogi">👋</span>
+						</h2>
+					</div>
+				</div>
+			</section>
+			<!-- //main -->
 
-            <!-- 개인 -->
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/starbucks/" target="_blank">
-                    <figure><img src="images/starbucks.png"></figure>
-                    <div class="hover_info">
-                        <h4>Starbucks</h4>
-                        <p>클론코딩</p>
-                    </div>
-                    <div class="txt_box"><strong>Starbucks</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/DesignWorks/" target="_blank">
-                    <figure><img src="images/designWorks.png"></figure>
-                    <div class="hover_info">
-                        <h4>DesignWorks</h4>
-                        <p>반응형 / 디자인</p>
-                    </div>
-                    <div class="txt_box"><strong>DesignWorks</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/osulloc/" target="_blank">
-                    <figure><img src="images/osulloc.png"></figure>
-                    <div class="hover_info">
-                        <h4>오설록</h4>
-                        <p>PC / 클론코딩</p>
-                    </div>
-                    <div class="txt_box"><strong>오설록</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/resom/" target="_blank">
-                    <figure><img src="images/resom.png"></figure>
-                    <div class="hover_info">
-                        <h4>포레스트리솜</h4>
-                        <p>PC / 클론코딩</p>
-                    </div>
-                    <div class="txt_box"><strong>포레스트리솜</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/leica/" target="_blank">
-                    <figure><img src="images/leica.png"></figure>
-                    <div class="hover_info">
-                        <h4>LEICA</h4>
-                        <p>PC / 클론코딩</p>
-                    </div>
-                    <div class="txt_box"><strong>LEICA</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/Motion_flex_video/" target="_blank">
-                    <figure><img src="images/flex_video.png"></figure>
-                    <div class="hover_info">
-                        <h4>Flex video</h4>
-                        <p>PC / 모션</p>
-                    </div>
-                    <div class="txt_box"><strong>Flex video</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/Motion_swiper/" target="_blank">
-                    <figure><img src="images/motion_swiper.png"></figure>
-                    <div class="hover_info">
-                        <h4>Swiper</h4>
-                        <p>PC / 모션</p>
-                    </div>
-                    <div class="txt_box"><strong>Swiper</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/Motion_responsive_gallery/" target="_blank">
-                    <figure><img src="images/motion_responsive_gallery.png"></figure>
-                    <div class="hover_info">
-                        <h4>Responsive gallery</h4>
-                        <p>PC / 모션</p>
-                    </div>
-                    <div class="txt_box"><strong>Responsive gallery</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/Motion_svg_slide/" target="_blank">
-                    <figure><img src="images/motion_svg_slide.png"></figure>
-                    <div class="hover_info">
-                        <h4>Svg slide</h4>
-                        <p>PC / 모션</p>
-                    </div>
-                    <div class="txt_box"><strong>Svg slide</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-            <li class="item personal">
-                <a href="https://chaen32068.github.io/Motion_panorama/" target="_blank">
-                    <figure><img src="images/motion_panorama.png"></figure>
-                    <div class="hover_info">
-                        <h4>panorama</h4>
-                        <p>PC / 모션</p>
-                    </div>
-                    <div class="txt_box"><strong>Motion panorama</strong><span class="percent">100%</span></div>
-                </a>
-            </li>
-        </ul>
-    </div>
+			<section id="about">
+				<div class="inner">
+					<div class="tit">
+						<h2>About me</h2>
+					</div>
+					<div class="profile">
+						<div class="visual">
+							<figure>
+								<img src="images/chaennny_profile.jpg" alt="채은진 프로필 이미지">
+							</figure>
+						</div>
+						<div class="text">
+							<p>
+								안녕하세요. 호기심 많은 웹 퍼블리셔, 채은진입니다.
+							</p>
+							<p>
+								저는 열정적으로 퍼블리싱에 뛰어들어 지금까지 꾸준히 발전하며 퍼블리셔의 길을 걸어왔습니다.<br />디자인을 단순히 웹에 구현하는 것이 아니라, 웹 사이트에서 발생하는 모든 부분을 혼자서 구현해보는 것을 최종 목표로 삼고 있습니다.
+							</p>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btns = document.querySelectorAll('.filter-btn');
-            const items = document.querySelectorAll('.item');
+							<div class="link">
+								<div class="port_link">
+									<span>Portfolio</span>
+									<a href="https://rattle-decimal-6bb.notion.site/Chaennny-ddb0e9b27b44497bb62b07d29d9cd430" target="_blank"
+										title="채은진 포트폴리오 새창열기" tabindex="0">chaennny_portfolio</a>
+								</div>
+								<div class="git_link">
+									<span>GIT</span>
+									<a href="https://github.com/chaen32068?tab=repositories" target="_blank" title="채은진 GIT 새창열기"
+										tabindex="0">chaennny_git</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- //about -->
 
-            // 1. 탭 숫자 자동 업데이트 함수
-            const updateCounts = () => {
-                const total = items.length;
-                const buildCount = document.querySelectorAll('.item.build').length;
-                const operCount = document.querySelectorAll('.item.oper').length;
-                const personalCount = document.querySelectorAll('.item.personal').length;
+			<section id="skill">
+				<div class="inner">
+					<div class="tit">
+						<h2>Skills</h2>
+					</div>
+					<ul class="skill_box">
+						<li>
+							<i class="fa-solid fa-code"></i>
+							<strong>UI DEVELOPER</strong>
+							<p>HTML, CSS를 잘 다루는 퍼블리셔 입니다.<br>
+								웹 표준을 준수하고 유지보수를 고려한 코드를 작성하기 위해 노력하며, 레거시한 코드는 지양합니다.</p>
+						</li>
+						<li>
+							<i class="fa-solid fa-laptop-code"></i>
+							<strong>RESPONSIVE</strong>
+							<p>다양한 사용자를 차별하지 않고, 사용자를 고려한 웹을 만들기 위해 노력합니다. 미디어쿼리를 활용하여 반응형 레이아웃을 이해 및 구현합니다.</p>
+						</li>
+						<li>
+							<i class="fa-solid fa-quote-left"></i>
+							<strong>FRONTEND</strong>
+							<p>jQuery를 작성하여 기능을 구현할 수 있습니다.<br>
+								javascript에 대한 공부를 게을리하지 않으며 컴퓨터공학과에 입학하여 전공 지식을 배우고 있습니다.</p>
+						</li>
+						<li>
+							<i class="fa-solid fa-pen-nib"></i>
+							<strong>SKILLS</strong>
+							<p>새로운 지식에 대한 두려움이 없습니다.<br>
+								새로운 기술에 관심이 많고, scss, Git, sourcetree 등 다양한 지식을 배우고 적용합니다.</p>
+						</li>
+						<li>
+							<i class="fa-regular fa-handshake"></i>
+							<strong>COOPERATION</strong>
+							<p>기획자, 디자이너, 개발자와 원활하게 협업하려고 노력합니다.
+								다른 분야를 이해하고 도와가며 더 좋은 결과물을 만들어냅니다.</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<!-- //skill -->
 
-                btns.forEach(btn => {
-                    const type = btn.dataset.filter;
-                    let count = 0;
-                    if (type === 'all') count = total;
-                    else if (type === 'build') count = buildCount;
-                    else if (type === 'oper') count = operCount;
-                    else if (type === 'personal') count = personalCount;
+			<section id="portfolio">
+				<div class="inner">
+					<div class="tit">
+						<h2>Portfolio</h2>
+					</div>
+					<ul class="item_cont">
+						<li>
+							<a href="https://www.lge.co.kr/" target="_blank" title="LG전자 사이트 새창열기">
+								<figure>
+									<img src="images/lg.png" alt="LG전자">
+								</figure>
+								<div class="hover">
+									<div class="item_inner">
+										<h4>
+											<span>운영 / 반응형 / 애플리케이션</span>
+											LG전자
+										</h4>
+										<p>
+											<span>
+												작업기여도 100%
+											</span>
+										</p>
+									</div>
+								</div>
+							</a>
+							<div class="txt">
+								LG전자
+							</div>
+						</li>
+						<li>
+							<a href="https://paybooc.co.kr/app/paybooc/Main.do?coCd=R005" target="_blank" title="비씨카드 페이북 사이트 새창열기">
+								<figure>
+									<img src="images/bc_paybook_mo.png" alt="비씨카드 페이북">
+								</figure>
+								<div class="hover">
+									<div class="item_inner">
+										<h4>
+											<span>반응형 &#47; 리뉴얼</span>
+											비씨카드 페이북
+										</h4>
+										<p>
+											<span>
+												작업기여도 80%
+											</span>
+										</p>
+									</div>
+								</div>
+							</a>
+							<div class="txt">
+								비씨카드 페이북
+							</div>
+						</li>
+						<li>
+							<a href="https://www.samsungsdi.co.kr/" target="_blank" title="SAMSUNG SDI 사이트 새창열기">
+								<figure>
+									<img src="images/sdi.png" alt="SAMSUNG SDI">
+								</figure>
+								<div class="hover">
+									<div class="item_inner">
+										<h4>
+											<span>반응형 &#47; 리뉴얼</span>
+											SAMSUNG SDI
+										</h4>
+										<p>
+											<span>
+												퍼블리싱 80%
+											</span>
+										</p>
+									</div>
+								</div>
+							</a>
+							<div class="txt">
+								SAMSUNG SDI
+							</div>
+						</li>
+						<!-- <li>
+							<a href="https://hlmando.com/ko/main.do" target="_blank" title="HL만도 사이트 새창열기">
+								<figure>
+									<img src="images/mando.png" alt="HL만도">
+								</figure>
+								<div class="hover">
+									<div class="item_inner">
+										<h4>
+											<span>반응형 &#47; 리뉴얼</span>
+											HL만도 다국어(영문)
+										</h4>
+										<p>
+											<span>
+												퍼블리싱 60%
+											</span>
+										</p>
+									</div>
+								</div>
+							</a>
+							<div class="txt">
+								HL만도
+							</div>
+						</li> -->
+					</ul>
+					<div class="btn">
+						<a href="portfolio.html" target="_blank" title="portfolio 페이지 새창열기">VIEW MORE</a>
+					</div>
+				</div>
+			</section>
+			<!-- //portfolio -->
 
-                    // 기존 텍스트 뒤에 개수 업데이트
-                    const baseTxt = btn.innerText.split('(')[0].trim();
-                    btn.innerText = `${baseTxt} (${count})`;
-                });
-            };
+			<section id="contact">
+				<h4>
+					"세상은 에너지넘치는 사람들의 것이다." -랄프 왈도 에머슨- <br />
+					항상 주변에 밝은 에너지를 주고싶은, 인간 비타민 채은진입니다.
+				</h4>
 
-            // 2. 필터 클릭 이벤트
-            btns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    btns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+				<a data-cursor="outlink" href="mailto:chaenjin0109@gmail.com" target="_blank" rel="noopener noreferrer"
+					class="mail">chaenjin0109@gmail.com</a>
+			</section>
+			<!-- //contact -->
+		</div>
 
-                    const filter = btn.dataset.filter;
-                    items.forEach(item => {
-                        if (filter === 'all' || item.classList.contains(filter)) {
-                            item.classList.remove('hide');
-                        } else {
-                            item.classList.add('hide');
-                        }
-                    });
-                });
-            });
-
-            updateCounts();
-        });
-    </script>
+		<!--top버튼-->
+		<div id="top">
+			<a href="#" title="최상단으로 이동하기">
+				<img src="images/icon.png" alt="최상단으로 이동하기">
+			</a>
+		</div>
+	</div>
 </body>
 
 </html>
